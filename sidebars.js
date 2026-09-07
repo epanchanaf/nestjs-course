@@ -13,6 +13,18 @@ const sidebars = {
         {type: 'link', label: '↗ Diapositivas · Sesión 2', href: '/diapositivas/semana-01-sesion-02'},
         'semana-01/proyecto-integrador'
       ]
+    },
+    {
+      type: 'category',
+      label: 'Semana 2 · REST y routing',
+      items: [
+        'semana-02/objetivos',
+        'semana-02/sesion-03',
+        {type: 'link', label: '↗ Diapositivas · Sesión 3', href: '/diapositivas/semana-02-sesion-03'},
+        'semana-02/sesion-04',
+        {type: 'link', label: '↗ Diapositivas · Sesión 4', href: '/diapositivas/semana-02-sesion-04'},
+        'semana-02/proyecto-integrador'
+      ]
     }
   ]
 };

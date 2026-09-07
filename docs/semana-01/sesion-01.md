@@ -7,6 +7,8 @@ sidebar_position: 2
 **Duración:** 2 horas.  
 **Meta:** iniciar una aplicación NestJS y entender cómo una petición llega a un controlador.
 
+[Abrir presentación navegable de la Sesión 1](/diapositivas/semana-01-sesion-01)
+
 ## Introducción · 10 min
 
 Una API no es solo una colección de rutas: necesita una estructura que siga siendo entendible cuando el proyecto crezca. NestJS propone una arquitectura basada en módulos y se apoya en TypeScript y decoradores.

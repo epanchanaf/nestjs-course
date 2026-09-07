@@ -7,6 +7,8 @@ sidebar_position: 3
 **Duración:** 2 horas.  
 **Meta:** crear una ruta de bienvenida para CourseHub API usando las responsabilidades básicas de NestJS.
 
+[Abrir presentación navegable de la Sesión 2](/diapositivas/semana-01-sesion-02)
+
 ## Introducción · 10 min
 
 En la sesión anterior usamos las piezas generadas por el CLI. Hoy las separaremos con intención: el módulo las registra, el controlador expone la ruta y el servicio conserva la lógica.

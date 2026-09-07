@@ -1,0 +1,20 @@
+.deck { min-height: 100vh; color: #f8f7f8; background: radial-gradient(circle at 83% 8%, #78213d 0, #28141d 31%, #121214 67%); display: grid; grid-template-rows: auto 1fr auto; font-family: Inter, system-ui, sans-serif; }
+.topbar, .controls { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem clamp(1.25rem, 5vw, 5rem); font-size: .9rem; color: #e4ccd4; }
+.topbar button, .controls button { border: 1px solid #d85a7b; color: #fff; background: transparent; padding: .6rem .9rem; border-radius: .45rem; font: inherit; cursor: pointer; }
+.topbar button:hover, .controls button:not(:disabled):hover { background: #c91f45; }
+.controls button:disabled { opacity: .35; cursor: not-allowed; }
+.back { color: #fff; text-decoration: none; }
+.slide { width: min(1040px, 88vw); align-self: center; justify-self: center; position: relative; padding: 3rem 0 2.5rem; }
+.number { position: absolute; right: 0; top: .5rem; color: #ff7090; font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 200; }
+.kicker { margin: 0 0 1.1rem; color: #ff7997; letter-spacing: .14em; font-size: .82rem; font-weight: 700; text-transform: uppercase; }
+.slide h1 { max-width: 900px; margin: 0; font-size: clamp(2.4rem, 6.8vw, 5.9rem); line-height: .99; letter-spacing: -.055em; }
+.statement { max-width: 850px; margin: 2rem 0 0; font-size: clamp(1.2rem, 2.25vw, 2rem); line-height: 1.35; color: #eadde1; }
+.slide ul { margin: 2rem 0 0; padding: 0; display: grid; gap: .85rem; list-style: none; font-size: clamp(1.08rem, 2vw, 1.65rem); }
+.slide li { padding-left: 1.35em; position: relative; }
+.slide li::before { content: '→'; color: #ff6d8d; left: 0; position: absolute; }
+.slide pre { max-width: 800px; margin: 2rem 0 0; overflow: auto; padding: 1.4rem; border: 1px solid #754151; border-radius: .75rem; background: #181316; color: #f7e9ed; font-size: clamp(.8rem, 1.5vw, 1.05rem); line-height: 1.55; }
+.diagram { margin-top: 2rem; padding: 1.25rem 1.5rem; width: fit-content; border: 1px solid #9d3a56; border-radius: 999px; color: #ffe6ed; font-size: clamp(1.1rem, 2vw, 1.7rem); white-space: pre-wrap; }
+.controls { border-top: 1px solid rgba(255,255,255,.13); }
+.notes { position: fixed; z-index: 2; bottom: 5.5rem; right: 1.5rem; max-width: 330px; padding: 1rem 1.1rem; border-left: 4px solid #ff6d8d; border-radius: .35rem; background: #fff5f7; color: #32131d; box-shadow: 0 10px 35px rgba(0,0,0,.35); }
+.notes p { margin: .5rem 0 0; }
+@media (max-width: 600px) { .topbar { gap: .5rem; font-size: .75rem; } .topbar button { padding: .45rem; } .slide { width: 84vw; } .number { opacity: .5; } }

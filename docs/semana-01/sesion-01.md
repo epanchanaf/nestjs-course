@@ -9,13 +9,15 @@ sidebar_position: 2
 
 [Abrir presentación navegable de la Sesión 1](/diapositivas/semana-01-sesion-01)
 
+La presentación cubre los tres bloques de esta sesión: introducción y marco conceptual, ejemplo guiado y propuesta del proyecto integrador. Usa ←/→ o Espacio para avanzar; `P` muestra las notas para quien expone.
+
 ## Introducción · 10 min
 
 Una API no es solo una colección de rutas: necesita una estructura que siga siendo entendible cuando el proyecto crezca. NestJS propone una arquitectura basada en módulos y se apoya en TypeScript y decoradores.
 
 Pregunta de arranque: ¿qué debería ocurrir entre una petición `GET /` y la respuesta que ve el cliente?
 
-## Teoría en diapositivas · 24 min (20%)
+## Marco conceptual · 24 min (20%)
 
 Usa estas diapositivas breves durante la explicación. El contenido se basa en la documentación oficial de NestJS: [primeros pasos](https://docs.nestjs.com/first-steps), [controladores](https://docs.nestjs.com/controllers) y [módulos](https://docs.nestjs.com/modules).
 

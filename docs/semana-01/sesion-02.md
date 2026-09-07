@@ -9,11 +9,13 @@ sidebar_position: 3
 
 [Abrir presentación navegable de la Sesión 2](/diapositivas/semana-01-sesion-02)
 
+La presentación cubre los tres bloques de esta sesión: introducción y marco conceptual, ejemplo guiado y propuesta del proyecto integrador. Usa ←/→ o Espacio para avanzar; `P` muestra las notas para quien expone.
+
 ## Introducción · 10 min
 
 En la sesión anterior usamos las piezas generadas por el CLI. Hoy las separaremos con intención: el módulo las registra, el controlador expone la ruta y el servicio conserva la lógica.
 
-## Teoría en diapositivas · 24 min (20%)
+## Marco conceptual · 24 min (20%)
 
 Material oficial: [providers](https://docs.nestjs.com/providers), [módulos](https://docs.nestjs.com/modules) y [controladores](https://docs.nestjs.com/controllers).
 

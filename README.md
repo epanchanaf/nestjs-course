@@ -15,6 +15,5 @@ El sitio se abre normalmente en `http://localhost:3000/nestjs-course/`.
 
 ## Publicar en GitHub Pages
 
-1. En `docusaurus.config.js`, reemplaza `TU-USUARIO` por tu nombre de usuario de GitHub.
-2. En el repositorio, habilita GitHub Pages con la fuente **GitHub Actions**.
-3. Sube la rama `main`; el flujo `.github/workflows/deploy.yml` construirá y publicará el sitio.
+1. En el repositorio, habilita GitHub Pages con la fuente **GitHub Actions**.
+2. Sube la rama `main`; el flujo `.github/workflows/deploy.yml` construirá y publicará el sitio.

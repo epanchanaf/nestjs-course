@@ -7,7 +7,7 @@ const config = {
   favicon: 'img/favicon.svg',
   url: 'https://epanchanaf.github.io',
   baseUrl: '/nestjs-course/',
-  organizationName: 'Edgardo Panchana',
+  organizationName: 'epanchanaf',
   projectName: 'nestjs-course',
   trailingSlash: false,
   onBrokenLinks: 'throw',

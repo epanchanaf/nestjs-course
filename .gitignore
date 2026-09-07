@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+.npm-cache/
+build/
+.docusaurus/
+.cache-loader/
+npm-debug.log*
+AGENTS.md
+sources/

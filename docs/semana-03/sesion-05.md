@@ -72,10 +72,13 @@ export class CreateCourseDto { // 2
 }
 ```
 
-1. Importa reglas declarativas de validación.
-2. Declara el contrato de creación.
-3–4. Exige un título de texto no vacío.
-5. Limita el nivel a valores acordados.
+| Marca | Explicación |
+| --- | --- |
+| **1** | Importa desde `class-validator` las reglas declarativas que usará este DTO: validar texto, evitar valores vacíos y limitar una lista de opciones. |
+| **2** | Declara `CreateCourseDto`, la clase que representa exactamente los datos que se permite enviar al crear un curso. |
+| **3** | `@IsString()` comprueba que `title` sea texto. Por ejemplo, rechaza `"title": 42` porque un número no es un título válido. |
+| **4** | `@IsNotEmpty()` comprueba que el texto de `title` no esté vacío. Complementa a `@IsString()`: `"title": ""` es texto, pero no aporta un nombre de curso válido. |
+| **5** | `@IsIn([...])` limita `level` a `beginner`, `intermediate` o `advanced`. Así la API no acepta variantes incoherentes como `basic`, `expert` o `principiante`. |
 
 ### `src/main.ts`
 

@@ -1,6 +1,6 @@
 # Curso de NestJS
 
-Sitio docente construido con Docusaurus. La Semana 1 inicia el proyecto transversal **CourseHub API** sin adelantarse a CRUD, DTOs, validaciones o persistencia de datos.
+Sitio docente construido con Docusaurus para un curso de **32 sesiones**. CourseHub API avanza por incrementos: fundamentos de NestJS, rutas y módulos, CRUD validado y persistencia con PostgreSQL/TypeORM en las primeras cuatro semanas.
 
 ## Ejecutar localmente
 

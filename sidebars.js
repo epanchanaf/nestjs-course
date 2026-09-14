@@ -25,6 +25,30 @@ const sidebars = {
         {type: 'link', label: '↗ Diapositivas · Sesión 4', href: '/diapositivas/semana-02-sesion-04'},
         'semana-02/proyecto-integrador'
       ]
+    },
+    {
+      type: 'category',
+      label: 'Semana 3 · DTOs y validación',
+      items: [
+        'semana-03/objetivos',
+        'semana-03/sesion-05',
+        {type: 'link', label: '↗ Diapositivas · Sesión 5', href: '/diapositivas/semana-03-sesion-05'},
+        'semana-03/sesion-06',
+        {type: 'link', label: '↗ Diapositivas · Sesión 6', href: '/diapositivas/semana-03-sesion-06'},
+        'semana-03/proyecto-integrador'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Semana 4 · Persistencia',
+      items: [
+        'semana-04/objetivos',
+        'semana-04/sesion-07',
+        {type: 'link', label: '↗ Diapositivas · Sesión 7', href: '/diapositivas/semana-04-sesion-07'},
+        'semana-04/sesion-08',
+        {type: 'link', label: '↗ Diapositivas · Sesión 8', href: '/diapositivas/semana-04-sesion-08'},
+        'semana-04/proyecto-integrador'
+      ]
     }
   ]
 };

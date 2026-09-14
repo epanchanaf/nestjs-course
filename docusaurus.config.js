@@ -36,7 +36,12 @@ const config = {
     footer: {
       style: 'dark',
       links: [
-        {title: 'Curso', items: [{label: 'Semana 1', to: '/semana-01/sesion-01'}]},
+        {title: 'Curso', items: [
+          {label: 'Semana 1', to: '/semana-01/sesion-01'},
+          {label: 'Semana 2', to: '/semana-02/sesion-03'},
+          {label: 'Semana 3', to: '/semana-03/sesion-05'},
+          {label: 'Semana 4', to: '/semana-04/sesion-07'}
+        ]},
         {title: 'Recursos', items: [{label: 'Documentación oficial de NestJS', href: 'https://docs.nestjs.com/'}]}
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Curso de NestJS.`

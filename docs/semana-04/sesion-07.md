@@ -5,7 +5,7 @@ sidebar_position: 2
 # Sesión 7 · Conectar una aplicación a PostgreSQL
 
 **Duración:** 2 horas.  
-**Meta:** separar la configuración del código y crear una entidad de curso que TypeORM pueda persistir.
+**Meta:** preparar PostgreSQL y TypeORM para que `Course` tenga una tabla persistente, sin cambiar todavía el CRUD que vive en memoria.
 
 [Abrir presentación navegable de la Sesión 7](/diapositivas/semana-04-sesion-07)
 
@@ -13,25 +13,26 @@ sidebar_position: 2
 
 Debes tener el CRUD validado de la Semana 3 y una instalación local de PostgreSQL en ejecución. Esta sesión no requiere conocer SQL avanzado, pero sí distinguir entre una aplicación, una base de datos y una tabla. Necesitarás acceso a una terminal para crear una base de desarrollo y editar variables de entorno.
 
-Antes de tocar el código, ejecuta la API actual y crea un curso. Reinicia el servidor y observa que desaparece. Esa evidencia concreta explica por qué introducimos persistencia.
+Antes de tocar el código, ejecuta la API actual y crea un curso. Reinicia el servidor y observa que desaparece. El servicio todavía usa un arreglo temporal, por lo que esa pérdida es esperada. Esa evidencia concreta explica por qué introducimos persistencia.
 
 ## Introducción · 10 min
 
-El CRUD en memoria se entiende, pero desaparece al reiniciar. Una base de datos resuelve esa necesidad solo si la conexión y el modelo se definen de forma explícita y segura.
+El CRUD en memoria ya nos permitió aprender rutas, DTOs, validación y errores HTTP. Su límite es que los datos desaparecen al reiniciar. Una base de datos resuelve esa necesidad solo si la conexión y el modelo se definen de forma explícita y segura.
 
-PostgreSQL es el programa que conserva datos en disco. TypeORM es una biblioteca que permite a nuestra aplicación trabajar con esos datos mediante clases y repositorios. NestJS coordina las piezas: carga la configuración, abre la conexión y entrega las dependencias donde se necesitan.
+PostgreSQL es el programa que conserva datos en disco. TypeORM es una biblioteca que relaciona nuestras clases con tablas. NestJS coordina las piezas: carga la configuración, abre la conexión y prepara las entidades. En la Sesión 8 conectaremos el servicio al repositorio de TypeORM y sustituiremos el arreglo temporal.
 
 ## Marco conceptual · 24 min (20%)
 
 Material oficial: [técnicas de base de datos](https://docs.nestjs.com/techniques/database), [configuración](https://docs.nestjs.com/techniques/configuration) y [TypeORM](https://typeorm.io/).
 
-### Diapositiva 1 · Qué añade persistencia
+### Diapositiva 1 · Del arreglo temporal a una tabla
 
 ```text
-Controller → Service → Repository → PostgreSQL
+Hoy:      Controller → Service → arreglo en memoria
+Al final: Controller → Service → repositorio TypeORM → PostgreSQL
 ```
 
-El controlador conserva el contrato HTTP. El servicio conserva las reglas. El repositorio traduce operaciones del dominio a almacenamiento.
+Las rutas, los DTOs y las respuestas HTTP no cambian. Hoy preparamos la conexión y la tabla; el repositorio —la pieza que el servicio usará para leer y escribir— se presenta y se usa en la siguiente sesión.
 
 ### Diapositiva 2 · Configuración fuera del código
 
@@ -45,6 +46,7 @@ Credenciales y puertos cambian por equipo y entorno. `.env` los contiene localme
 - **Entidad:** clase TypeScript que TypeORM relaciona con una tabla.
 - **Variable de entorno:** valor de configuración externo al código, por ejemplo el puerto o contraseña de PostgreSQL.
 - **ORM:** herramienta que conecta objetos o clases con almacenamiento relacional. TypeORM es el ORM elegido aquí.
+- **Repositorio:** objeto que permite consultar y guardar una entidad. Lo usaremos por primera vez en la Sesión 8.
 
 ### Diapositiva 3 · Entidad no es DTO
 
@@ -52,7 +54,9 @@ Credenciales y puertos cambian por equipo y entorno. `.env` los contiene localme
 | --- | --- |
 | Entrada HTTP validada | Modelo que TypeORM guarda |
 | `CreateCourseDto` | `Course` |
-| No conoce la base de datos | Declara columnas y clave primaria |
+| No conoce la base de datos | Declara tabla, columnas y clave primaria |
+
+La entidad no reemplaza al DTO. `CreateCourseDto` sigue protegiendo lo que llega por HTTP; `Course` describe cómo se organiza un curso una vez que se guarda. Por ahora el controlador seguirá enviando el DTO al servicio igual que en la Semana 3.
 
 ## Desarrollo · ejemplo guiado · 36 min (30%)
 
@@ -113,6 +117,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CoursesModule } from './courses/courses.module';
+import { Course } from './courses/entities/course.entity';
 
 @Module({
   imports: [
@@ -125,7 +130,8 @@ import { CoursesModule } from './courses/courses.module';
         username: config.getOrThrow('DATABASE_USER'),
         password: config.getOrThrow('DATABASE_PASSWORD'),
         database: config.getOrThrow('DATABASE_NAME'),
-        autoLoadEntities: true, synchronize: true,
+        entities: [Course],
+        synchronize: true,
       }),
     }),
     CoursesModule,
@@ -141,14 +147,16 @@ export class AppModule {}
 1. `ConfigModule.forRoot({ isGlobal: true })` busca y carga las variables de `.env` al iniciar la aplicación.
 2. `TypeOrmModule.forRootAsync` espera a que `ConfigService` esté disponible antes de construir la conexión.
 3. `config.getOrThrow('DATABASE_HOST')` detiene el arranque con un error claro si falta una clave importante.
-4. `autoLoadEntities: true` reúne las entidades registradas en módulos de la aplicación.
+4. `entities: [Course]` indica con claridad qué entidad debe conocer esta primera conexión; TypeORM puede crear la tabla `courses` a partir de ella.
 5. `synchronize: true` crea o ajusta tablas durante el desarrollo local.
+
+En esta sesión registramos `Course` en la conexión para crear su tabla. No inyectamos todavía un repositorio en `CoursesService`: el CRUD sigue usando el arreglo de la Semana 3. La Sesión 8 hará esa sustitución sin alterar las rutas ni los DTOs.
 
 Si el servidor no inicia, no supongas que el código está mal. Primero revisa el mensaje de error: una contraseña incorrecta, PostgreSQL apagado o una variable ausente producen problemas distintos.
 
 ### Comprobación de la conexión
 
-Después de crear la entidad y arrancar la API, busca en la salida de la terminal un mensaje de conexión exitosa o, si aparece un error, identifica su tipo.
+Después de crear la entidad y arrancar la API, confirma dos cosas: que TypeORM se conectó y que PostgreSQL contiene la tabla `courses`. Puedes verlo con tu cliente de base de datos (pgAdmin, DBeaver u otro). Es normal que la tabla esté vacía: todavía no hemos conectado el CRUD al repositorio.
 
 | Mensaje o síntoma | Interpretación habitual | Primera revisión |
 | --- | --- | --- |
@@ -163,17 +171,17 @@ Después de crear la entidad y arrancar la API, busca en la salida de la termina
 
 ## Cierre · 10 min
 
-¿Qué archivo puede publicarse y cuál no? ¿Por qué una entidad no reemplaza la validación del DTO? Explica el nuevo recorrido de una operación hasta PostgreSQL.
+¿Qué archivo puede publicarse y cuál no? ¿Por qué una entidad no reemplaza la validación del DTO? Explica qué permanece igual del CRUD de la Semana 3 y qué preparó esta sesión para la siguiente.
 
 ## Proyecto integrador · 60 min (50%)
 
 1. Instala las dependencias y prepara PostgreSQL local.
 2. Añade `.env.example` y protege `.env` con `.gitignore`.
 3. Configura `ConfigModule` y `TypeOrmModule` en `AppModule`.
-4. Crea la entidad `Course` con `id`, `title` y `level`.
-5. Arranca la API y confirma que conecta; publica solo los cambios seguros.
+4. Crea la entidad `Course` con `id`, `title` y `level`, y regístrala en la conexión.
+5. Arranca la API y confirma la conexión y la tabla vacía; publica solo los cambios seguros.
 
-**Criterio de salida:** la aplicación arranca con su configuración local, TypeORM descubre `Course` y ninguna credencial real entra al repositorio.
+**Criterio de salida:** la aplicación arranca con su configuración local, PostgreSQL tiene la tabla `courses`, el CRUD aún funciona en memoria y ninguna credencial real entra al repositorio.
 
 ## Tarea opcional
 

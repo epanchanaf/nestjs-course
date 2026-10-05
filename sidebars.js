@@ -49,6 +49,18 @@ const sidebars = {
         {type: 'link', label: '↗ Diapositivas · Sesión 8', href: '/diapositivas/semana-04-sesion-08'},
         'semana-04/proyecto-integrador'
       ]
+    },
+    {
+      type: 'category',
+      label: 'Semana 5 · Relaciones persistentes',
+      items: [
+        'semana-05/objetivos',
+        'semana-05/sesion-09',
+        {type: 'link', label: '↗ Diapositivas · Sesión 9', href: '/diapositivas/semana-05-sesion-09'},
+        'semana-05/sesion-10',
+        {type: 'link', label: '↗ Diapositivas · Sesión 10', href: '/diapositivas/semana-05-sesion-10'},
+        'semana-05/proyecto-integrador'
+      ]
     }
   ]
 };

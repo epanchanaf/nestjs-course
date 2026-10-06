@@ -61,6 +61,30 @@ const sidebars = {
         {type: 'link', label: '↗ Diapositivas · Sesión 10', href: '/diapositivas/semana-05-sesion-10'},
         'semana-05/proyecto-integrador'
       ]
+    },
+    {
+      type: 'category',
+      label: 'Semana 6 · Consultas de datos',
+      items: [
+        'semana-06/objetivos',
+        'semana-06/sesion-11',
+        {type: 'link', label: '↗ Diapositivas · Sesión 11', href: '/diapositivas/semana-06-sesion-11'},
+        'semana-06/sesion-12',
+        {type: 'link', label: '↗ Diapositivas · Sesión 12', href: '/diapositivas/semana-06-sesion-12'},
+        'semana-06/proyecto-integrador'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Semana 7 · Configuración por ambientes',
+      items: [
+        'semana-07/objetivos',
+        'semana-07/sesion-13',
+        {type: 'link', label: '↗ Diapositivas · Sesión 13', href: '/diapositivas/semana-07-sesion-13'},
+        'semana-07/sesion-14',
+        {type: 'link', label: '↗ Diapositivas · Sesión 14', href: '/diapositivas/semana-07-sesion-14'},
+        'semana-07/proyecto-integrador'
+      ]
     }
   ]
 };

@@ -41,7 +41,11 @@ const config = {
           {label: 'Semana 2', to: '/semana-02/sesion-03'},
           {label: 'Semana 3', to: '/semana-03/sesion-05'},
           {label: 'Semana 4', to: '/semana-04/sesion-07'},
-          {label: 'Semana 5', to: '/semana-05/sesion-09'}
+          {label: 'Semana 5', to: '/semana-05/sesion-09'},
+          {label: 'Semana 6', to: '/semana-06/sesion-11'},
+          {label: 'Semana 7', to: '/semana-07/sesion-13'},
+          {label: 'Semana 8', to: '/semana-08/sesion-15'},
+          {label: 'Semana 9', to: '/semana-09/sesion-17'}
         ]},
         {title: 'Recursos', items: [{label: 'Documentación oficial de NestJS', href: 'https://docs.nestjs.com/'}]}
       ],

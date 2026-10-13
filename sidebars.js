@@ -85,6 +85,30 @@ const sidebars = {
         {type: 'link', label: '↗ Diapositivas · Sesión 14', href: '/diapositivas/semana-07-sesion-14'},
         'semana-07/proyecto-integrador'
       ]
+    },
+    {
+      type: 'category',
+      label: 'Semana 8 · Autenticación inicial',
+      items: [
+        'semana-08/objetivos',
+        'semana-08/sesion-15',
+        {type: 'link', label: '↗ Diapositivas · Sesión 15', href: '/diapositivas/semana-08-sesion-15'},
+        'semana-08/sesion-16',
+        {type: 'link', label: '↗ Diapositivas · Sesión 16', href: '/diapositivas/semana-08-sesion-16'},
+        'semana-08/proyecto-integrador'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Semana 9 · Protección con JWT',
+      items: [
+        'semana-09/objetivos',
+        'semana-09/sesion-17',
+        {type: 'link', label: '↗ Diapositivas · Sesión 17', href: '/diapositivas/semana-09-sesion-17'},
+        'semana-09/sesion-18',
+        {type: 'link', label: '↗ Diapositivas · Sesión 18', href: '/diapositivas/semana-09-sesion-18'},
+        'semana-09/proyecto-integrador'
+      ]
     }
   ]
 };

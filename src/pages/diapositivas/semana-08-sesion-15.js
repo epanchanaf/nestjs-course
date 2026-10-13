@@ -1,0 +1,18 @@
+import React from 'react';
+import SlideDeck from '../../components/SlideDeck';
+
+const slides = [
+  { kicker: 'Curso de NestJS · Semana 8', title: 'Una contraseña no se guarda: se transforma.', statement: 'Sesión 15 · Registro de usuarios y hashing con bcrypt.', notes: 'Conecta la persistencia aprendida hasta Semana 7 con una nueva entidad de acceso. Aclara que User no es automáticamente Student.' },
+  { kicker: 'Objetivo', title: 'Crearemos cuentas sin conservar secretos.', bullets: ['Persistir un usuario con correo único.', 'Validar registro con DTO.', 'Aplicar bcrypt antes de guardar.', 'Omitir hash de todas las respuestas.'], notes: 'La meta es preparar login, no emitir JWT todavía.' },
+  { kicker: 'Riesgo', title: 'Texto plano convierte una filtración en una crisis.', diagram: 'password = "clave123"  ✗\n\ncontraseña → bcrypt.hash → passwordHash  ✓', notes: 'Nunca usar una contraseña real para la demostración ni mostrar datos de una base ajena.' },
+  { kicker: 'Conceptos', title: 'Hash no es cifrado.', bullets: ['El cifrado se puede revertir con una clave.', 'El hash sirve para comparar, no recuperar.', 'bcrypt incorpora salt.', 'El costo hace más lenta la fuerza bruta.'], notes: 'Dos passwords iguales no producen necesariamente hashes iguales: es esperado.' },
+  { kicker: 'Recorrido', title: 'La contraseña existe el menor tiempo posible.', diagram: 'HTTP body\n  ↓ DTO\nAuthService → bcrypt.hash\n  ↓\nPostgreSQL: passwordHash\n  ↓\nRespuesta segura', notes: 'No imprimir ni loguear el cuerpo de la solicitud cuando incluye password.' },
+  { kicker: 'Entidad', title: 'El nombre de la columna debe hacer visible la intención.', code: '@Column({ unique: true })\nemail: string;\n\n@Column({ select: false })\npasswordHash: string;', notes: 'select:false reduce el riesgo de incluir el hash por una consulta normal; no sustituye construir respuestas seguras.' },
+  { kicker: 'DTO', title: 'Correo se normaliza; la contraseña no se altera.', code: '@Transform(({ value }) =>\n  String(value).trim().toLowerCase())\n@IsEmail()\nemail: string;\n\n@MinLength(8) @MaxLength(72)\npassword: string;', notes: 'No hacer trim o lowercase en password: cambiaría el secreto escogido por la persona.' },
+  { kicker: 'Servicio', title: 'Hash primero, persistencia después.', code: 'const passwordHash = await bcrypt.hash(\n  dto.password,\n  12,\n);\nreturn usersService.create(dto.email, passwordHash);', notes: 'UsersService recibe un hash, no una password, para no abrir una vía insegura de persistencia.' },
+  { kicker: 'Contratos', title: 'Las respuestas expresan el estado correcto.', bullets: ['Registro válido → 201 sin hash.', 'Correo repetido → 409.', 'Correo o contraseña mal formada → 400.', 'Base de datos también impone unicidad.'], notes: 'La comprobación de servicio mejora el mensaje; la restricción de base protege la integridad.' },
+  { kicker: 'Práctica · 40 min', title: 'Registra, inspecciona y prueba los límites.', bullets: ['Crea User, UsersModule y AuthModule.', 'Registra una cuenta de práctica.', 'Verifica solo hash en la base local.', 'Prueba mayúsculas y duplicado.', 'Prueba dos DTOs inválidos.'], notes: 'Pide evidencia que oculte tanto password como hash.' },
+  { kicker: 'Salida', title: 'Una contraseña correcta nunca sale del servidor.', statement: 'La semana siguiente la compararemos con bcrypt para autenticar; no necesitaremos conocer el texto original.', notes: 'Pregunta de cierre: ¿en qué punto del recorrido existe la contraseña original?' },
+];
+
+export default function Semana08Sesion15() { return <SlideDeck slides={slides} session="Semana 8 · Sesión 15" />; }

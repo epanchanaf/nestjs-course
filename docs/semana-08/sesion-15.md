@@ -5,7 +5,7 @@ sidebar_position: 2
 # Sesión 15 · Registrar usuarios sin guardar contraseñas
 
 **Duración:** 2 horas.  
-**Meta:** crear una cuenta de usuario persistente y transformar la contraseña en un hash antes de guardarla.
+**Meta:** crear una cuenta de usuario persistente y transformar la contraseña en un hash antes de guardarla. La sesión también ubica este mecanismo dentro de un panorama actual de autenticación y autorización.
 
 [Abrir presentación navegable de la Sesión 15](/diapositivas/semana-08-sesion-15)
 
@@ -19,14 +19,37 @@ Ten presente una distinción importante: `Student` representa a una persona dent
 
 | Tiempo | Actividad | Evidencia |
 | --- | --- | --- |
-| 0–10 | Situación inicial | Explicar por qué una contraseña no es una columna común. |
-| 10–30 | Marco conceptual | Diferenciar texto plano, cifrado y hash. |
-| 30–60 | Demostración guiada | Crear `User`, DTO y registro con `bcrypt`. |
+| 0–15 | Situación inicial | Distinguir autenticación, autorización y credenciales. |
+| 15–35 | Marco conceptual | Diferenciar texto plano, cifrado y hash. |
+| 35–60 | Demostración guiada | Crear `User`, DTO y registro con `bcrypt`. |
 | 60–100 | Práctica guiada | Implementar, probar y revisar que no hay filtraciones. |
 | 100–110 | Actividad autónoma | Probar duplicados y entradas inválidas. |
 | 110–120 | Cierre | Defender el recorrido seguro de una contraseña. |
 
-## Introducción · 10 min
+## Introducción · 15 min
+
+### Autenticación, autorización y mecanismos actuales
+
+La **autenticación** responde quién realiza una solicitud. La **autorización** responde si esa identidad puede realizar una acción sobre un recurso concreto. Por ejemplo, un usuario puede iniciar sesión correctamente y aun así no tener permiso para editar el curso de otra persona.
+
+Una aplicación actual puede comprobar la identidad de distintas maneras:
+
+| Mecanismo | Qué verifica | Idea clave |
+| --- | --- | --- |
+| Contraseña | Que la persona conoce un secreto | El servidor guarda un hash, nunca el secreto. |
+| Passkey | Que un dispositivo o gestor puede firmar un desafío con una clave privada | El servidor conserva la clave pública. WebAuthn/FIDO reduce la exposición a phishing y a contraseñas reutilizadas. |
+| MFA | Una prueba adicional, como una passkey, una llave física o un código temporal | Aumenta la certeza de la identidad en acciones sensibles. |
+| Identidad federada | Que un proveedor de identidad ya autenticó a la persona | OpenID Connect añade identidad sobre OAuth 2.0. |
+
+Una aplicación que ofrece «continuar con Google, Microsoft o GitHub» suele usar **OpenID Connect (OIDC)** para recibir información de identidad validable. **OAuth 2.0** se utiliza para delegar acceso limitado a recursos y APIs. Son protocolos relacionados, pero OAuth por sí solo no define el inicio de sesión. En clientes públicos, como una SPA o una aplicación móvil, el flujo de código de autorización con PKCE evita exponer un secreto de cliente.
+
+Después del inicio de sesión, el servidor puede mantener una sesión propia o emitir tokens. Un **JWT** es un formato de claims firmado, no un mecanismo de cifrado ni una contraseña. Una API debe validar su firma, emisor, audiencia y expiración antes de confiar en él. Los access tokens suelen ser de corta duración; los refresh tokens requieren controles de almacenamiento, revocación y rotación más estrictos.
+
+La autorización se aplica en el backend para cada operación. Los roles pueden expresar permisos generales, como `student`, `teacher` o `admin`; las reglas de propiedad comprueban quién creó un recurso; y un modelo basado en atributos puede considerar el contexto, como la sede o el estado de una matrícula. Ocultar una opción en la interfaz no protege la ruta HTTP.
+
+Referencias: [OpenID Connect Core](https://openid.net/specs/openid-connect-core-1_0-18.html), [OAuth 2.0 y PKCE](https://oauth.net/2/pkce/), [FIDO Alliance Passkeys](https://fidoalliance.org/passkeys/) y [RFC 8725: JWT Best Current Practices](https://datatracker.ietf.org/doc/html/rfc8725).
+
+### Registro local con contraseña
 
 Una contraseña permite demostrar que alguien conoce un secreto. Eso no significa que el servidor deba conservar el secreto. Si una tabla guarda `password = "clave123"`, una filtración de la base de datos expone de inmediato esa contraseña y puede afectar otras cuentas donde alguien la reutilizó.
 
@@ -72,7 +95,7 @@ Material oficial: [autenticación en Nest](https://docs.nestjs.com/security/auth
 
 La unicidad en la base de datos es imprescindible. La comprobación previa en el servicio hace que el error sea más comprensible, pero dos solicitudes simultáneas podrían superar esa comprobación al mismo tiempo. La restricción `unique` de PostgreSQL es la protección definitiva.
 
-## Demostración guiada · 30 min
+## Demostración guiada · 25 min
 
 ### Paso 1 · Instalar la dependencia y crear la estructura
 

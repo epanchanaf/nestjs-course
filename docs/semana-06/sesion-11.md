@@ -53,12 +53,20 @@ Material oficial: [validación de Nest](https://docs.nestjs.com/techniques/valid
 
 Los valores de un filtro se pasan como parámetros de la consulta. El nombre de una columna no puede parametrizarse de la misma manera, por lo que **nunca** se usa directamente `sortBy` recibido del cliente. En su lugar, se compara con una lista cerrada de campos admitidos. Si no está en la lista, la API devuelve `400 Bad Request`.
 
+### PostgreSQL primero, NoSQL cuando el problema lo justifique
+
+CourseHub conserva cursos, estudiantes y matrículas con relaciones, restricciones y operaciones que deben permanecer consistentes. PostgreSQL es apropiado porque modela esas relaciones y permite consultarlas con transacciones y reglas de integridad. Una solución NoSQL puede ser conveniente para datos muy flexibles, grandes volúmenes de eventos o lecturas que no dependen de relaciones estrictas, pero no reemplaza automáticamente a una base relacional.
+
+En esta asignatura seguimos con PostgreSQL. El objetivo es reconocer el criterio de elección, no añadir una segunda base de datos sin una necesidad del producto.
+
 ### Vocabulario esencial
 
 - **Query string:** parte de una URL posterior a `?`, formada por pares `clave=valor`.
 - **Paginación por desplazamiento:** técnica que omite un número de filas (`skip`) y toma un máximo (`take`).
 - **Metadatos:** información sobre el resultado, como total, página y límite; no es un curso adicional.
 - **Lista permitida:** conjunto explícito de valores aceptados, útil para reducir errores y riesgos.
+- **Consulta parametrizada:** consulta que separa los valores suministrados por el cliente de la estructura de la consulta.
+- **Persistencia NoSQL:** familia de bases de datos que prioriza modelos de datos flexibles; su elección depende del problema, no de una moda tecnológica.
 
 ## Demostración guiada · 30 min
 

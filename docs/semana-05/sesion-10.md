@@ -46,6 +46,10 @@ La clave foránea evita filas huérfanas. El servicio sigue comprobando primero 
 
 Una consulta de matrículas puede devolver solo claves foráneas o también los objetos `student` y `course`. Para incluir los datos relacionados se solicita de forma explícita con `relations`. Así se evita cargar información innecesaria en cada consulta.
 
+### Diapositiva 4 · Evitar el patrón N+1
+
+El problema N+1 ocurre cuando primero se consulta una lista y después se realiza una consulta adicional por cada elemento para recuperar una relación. Por ejemplo, listar 20 matrículas y consultar por separado el estudiante de cada una puede producir 21 consultas. Cuando el contrato necesita estudiante y curso, se cargan de forma intencional en la consulta principal; cuando no los necesita, no se cargan.
+
 ### Vocabulario esencial
 
 - **Clave foránea:** columna que referencia la clave primaria de otra tabla.
@@ -53,6 +57,7 @@ Una consulta de matrículas puede devolver solo claves foráneas o también los 
 - **Relación `OneToMany`:** vista inversa: un estudiante o curso tiene una colección de matrículas.
 - **Restricción única compuesta:** regla que impide repetir una combinación, aquí estudiante + curso.
 - **Entidad intermedia:** entidad que representa el vínculo entre otras dos y puede tener datos propios.
+- **N+1:** patrón de consultas que multiplica accesos a la base de datos al cargar relaciones una por una.
 
 ## Desarrollo · ejemplo guiado · 36 min (30%)
 
@@ -171,7 +176,7 @@ Para cancelar una matrícula, primero busca por `id`; si no existe responde `404
 
 1. Crea un curso y un estudiante activo persistentes; anota sus identificadores.
 2. Registra `POST /enrollments` con esos ids. Debe responder `201`.
-3. Consulta `GET /enrollments?studentId=<id>` y verifica que trae ese vínculo y los datos relacionados.
+3. Consulta `GET /enrollments?studentId=<id>` y verifica que trae ese vínculo y los datos relacionados en una carga intencional, no mediante una consulta adicional por cada matrícula.
 4. Repite el `POST` con la misma pareja: debe responder `409 Conflict`.
 5. Desactiva el estudiante y prueba una matrícula en otro curso: debe responder `400 Bad Request`.
 6. Reinicia la API, consulta de nuevo y cancela la matrícula con `DELETE /enrollments/:id`.

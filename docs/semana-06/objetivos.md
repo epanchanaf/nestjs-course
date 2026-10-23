@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Resultado de aprendizaje
 
-Al finalizar la semana podrás diseñar consultas útiles y seguras para una API NestJS: filtrar, buscar, paginar y ordenar recursos persistentes usando repositorios de TypeORM y `QueryBuilder` cuando la consulta necesite composición.
+Al finalizar la semana podrás diseñar consultas útiles y seguras para una API NestJS: filtrar, buscar, paginar y ordenar recursos persistentes usando repositorios de TypeORM y `QueryBuilder` cuando la consulta necesite composición; además, podrás justificar cuándo un caso de uso conserva mejor su consistencia en PostgreSQL y cuándo podría requerir una solución NoSQL.
 
 ## Entregable semanal
 
@@ -15,6 +15,7 @@ CourseHub API expondrá `GET /courses` y `GET /students` con filtros combinables
 ## Límites de esta semana
 
 - Sí: parámetros de consulta validados, filtros opcionales, `ILIKE`, `skip`/`take`, ordenamiento por lista permitida, respuesta paginada y `QueryBuilder`.
+- Sí: consultas parametrizadas y criterios iniciales para distinguir necesidades relacionales y NoSQL.
 - No todavía: autenticación, permisos por rol, caché, Elasticsearch, optimización avanzada de índices ni una interfaz web.
 
 ## Ruta de trabajo

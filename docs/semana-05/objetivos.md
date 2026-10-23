@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Resultado de aprendizaje
 
-Al finalizar la semana podrás llevar los módulos de `students` y `enrollments` desde arreglos en memoria a PostgreSQL, conservando sus reglas de negocio y expresando una matrícula como una relación entre entidades.
+Al finalizar la semana podrás llevar los módulos de `students` y `enrollments` desde arreglos en memoria a PostgreSQL, conservar reglas y estados de negocio, expresar una matrícula como una relación entre entidades y consultar relaciones sin introducir cargas innecesarias.
 
 ## Entregable semanal
 
@@ -14,7 +14,8 @@ CourseHub API almacenará cursos, estudiantes y matrículas en PostgreSQL. Un es
 
 ## Límites de esta semana
 
-- Sí: entidades `Student` y `Enrollment`, repositorios, restricciones de integridad, relaciones `ManyToOne`/`OneToMany` y consultas con relaciones.
+- Sí: entidades `Student` y `Enrollment`, repositorios, restricciones de integridad, relaciones `ManyToOne`/`OneToMany`, estados restringidos y consultas con relaciones.
+- Sí: identificar y prevenir consultas N+1 al decidir qué relaciones se cargan en cada caso de uso.
 - No todavía: autenticación, roles, migraciones de producción, pagos o una interfaz gráfica.
 
 ## Ruta de trabajo

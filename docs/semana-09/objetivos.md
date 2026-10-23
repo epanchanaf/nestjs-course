@@ -15,10 +15,10 @@ CourseHub API devolverá un `accessToken` tras un login correcto. El cliente lo 
 ## Límites de esta semana
 
 - Sí: `@nestjs/jwt`, secreto y expiración configurados por entorno, carga útil mínima, estrategia JWT, `AuthGuard('jwt')` y `req.user`.
-- Sí: rutas públicas y protegidas, encabezado Bearer, errores `401` y pruebas de tokens inválidos.
+- Sí: rutas públicas y protegidas, encabezado Bearer, secretos y vencimiento configurados de forma segura, errores `401` y pruebas de tokens inválidos.
 - No todavía: roles, permisos, decoradores personalizados, *refresh tokens*, cierre de sesión con lista de revocación, recuperación de cuenta ni OAuth.
 
-JWT resuelve cómo una persona ya autenticada se identifica en otra solicitud. No decide todavía qué puede hacer dentro de CourseHub: esa es la meta de la Semana 10.
+JWT resuelve cómo una persona ya autenticada se identifica en otra solicitud. Una identidad ausente o inválida produce `401`; una identidad válida sin el permiso requerido produciría `403`, escenario que se implementará en la Semana 10. JWT no decide todavía qué puede hacer una persona dentro de CourseHub.
 
 ## Evidencia de salida
 

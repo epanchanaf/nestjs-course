@@ -52,6 +52,18 @@ El controlador recibe la petición y delega la lógica al servicio. Esta separac
 - Declara qué controladores y proveedores pertenecen a una parte de la aplicación.
 - Más adelante tendremos módulos de negocio, pero hoy usaremos el generado por Nest.
 
+### Diapositiva 5 · Un servidor no debe detenerse mientras espera
+
+Node.js coordina operaciones de entrada y salida —como recibir una petición o consultar una base de datos— mediante un modelo asíncrono. El *event loop* puede continuar atendiendo otras solicitudes mientras una operación de red o de disco espera su resultado.
+
+```text
+Solicitud A ── inicia consulta a la base de datos ── espera
+Solicitud B ── recibe una respuesta simple ────────── responde
+Solicitud A ── recibe el resultado ────────────────── responde
+```
+
+`await` no vuelve síncrona a la aplicación: expresa que una función espera un resultado sin bloquear el servidor. Evita cálculos pesados, ciclos extensos o archivos muy grandes dentro de un controlador; esas tareas requieren una estrategia específica cuando el proyecto crezca.
+
 ## Desarrollo · ejemplo guiado · 36 min (30%)
 
 Después de crear el proyecto con el CLI, revisa estos tres archivos generados. Léelos y ejecútalos antes de modificarlos.
@@ -123,7 +135,7 @@ export class AppService { // 3
 
 ## Cierre · 10 min
 
-Comprueba en pareja: ¿qué archivo crea el servidor?, ¿qué archivo recibe `GET /`?, ¿por qué la respuesta vive en un servicio? Registra una duda y un hallazgo en el `README` de tu repositorio.
+Comprueba en pareja: ¿qué archivo crea el servidor?, ¿qué archivo recibe `GET /`?, ¿por qué la respuesta vive en un servicio? Explica también por qué una espera de base de datos no debería detener otra petición. Registra una duda y un hallazgo en el `README` de tu repositorio.
 
 ## Proyecto integrador · 60 min (50%)
 

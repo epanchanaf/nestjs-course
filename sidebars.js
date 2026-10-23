@@ -109,6 +109,36 @@ const sidebars = {
         {type: 'link', label: '↗ Diapositivas · Sesión 18', href: '/diapositivas/semana-09-sesion-18'},
         'semana-09/proyecto-integrador'
       ]
+    },
+    {
+      type: 'category',
+      label: 'Semana 10 · Autorización y seguridad',
+      items: [
+        'semana-10/objetivos',
+        'semana-10/sesion-19',
+        'semana-10/sesion-20',
+        'semana-10/proyecto-integrador'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Semana 11 · Arquitectura y componentes transversales',
+      items: [
+        'semana-11/objetivos',
+        'semana-11/sesion-21',
+        'semana-11/sesion-22',
+        'semana-11/proyecto-integrador'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Semana 12 · Pruebas unitarias',
+      items: [
+        'semana-12/objetivos',
+        'semana-12/sesion-23',
+        'semana-12/sesion-24',
+        'semana-12/proyecto-integrador'
+      ]
     }
   ]
 };

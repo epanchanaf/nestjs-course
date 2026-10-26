@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # Sesión 24 · Controladores cobertura y calidad de pruebas
 
+[Abrir presentación navegable de la Sesión 24](/diapositivas/semana-12-sesion-24)
+
 **Duración:** 2 horas.  
 **Meta:** probar que un controlador delega correctamente, interpretar cobertura y distinguir una prueba útil de una prueba que solo aumenta porcentajes.
 

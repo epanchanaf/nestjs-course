@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # Sesión 19 · Roles permisos y propiedad de recursos
 
+[Abrir presentación navegable de la Sesión 19](/diapositivas/semana-10-sesion-19)
+
 **Duración:** 2 horas.  
 **Meta:** autorizar acciones con roles y comprobar que una persona solo modifica recursos sobre los que tiene permiso.
 

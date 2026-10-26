@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # Sesión 21 · Middleware pipes filters e interceptors
 
+[Abrir presentación navegable de la Sesión 21](/diapositivas/semana-11-sesion-21)
+
 **Duración:** 2 horas.  
 **Meta:** elegir el componente transversal correcto para registrar, validar, transformar y manejar errores sin duplicar código en los controladores.
 

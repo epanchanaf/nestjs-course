@@ -130,7 +130,9 @@ const sidebars = {
       items: [
         'semana-10/objetivos',
         'semana-10/sesion-19',
+        {type: 'link', label: '↗ Diapositivas · Sesión 19', href: '/diapositivas/semana-10-sesion-19'},
         'semana-10/sesion-20',
+        {type: 'link', label: '↗ Diapositivas · Sesión 20', href: '/diapositivas/semana-10-sesion-20'},
         'semana-10/proyecto-integrador'
       ]
     },
@@ -140,7 +142,9 @@ const sidebars = {
       items: [
         'semana-11/objetivos',
         'semana-11/sesion-21',
+        {type: 'link', label: '↗ Diapositivas · Sesión 21', href: '/diapositivas/semana-11-sesion-21'},
         'semana-11/sesion-22',
+        {type: 'link', label: '↗ Diapositivas · Sesión 22', href: '/diapositivas/semana-11-sesion-22'},
         'semana-11/proyecto-integrador'
       ]
     },
@@ -150,7 +154,9 @@ const sidebars = {
       items: [
         'semana-12/objetivos',
         'semana-12/sesion-23',
+        {type: 'link', label: '↗ Diapositivas · Sesión 23', href: '/diapositivas/semana-12-sesion-23'},
         'semana-12/sesion-24',
+        {type: 'link', label: '↗ Diapositivas · Sesión 24', href: '/diapositivas/semana-12-sesion-24'},
         'semana-12/proyecto-integrador'
       ]
     }

@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # Sesión 20 · Controles de seguridad para una API pública
 
+[Abrir presentación navegable de la Sesión 20](/diapositivas/semana-10-sesion-20)
+
 **Duración:** 2 horas.  
 **Meta:** configurar controles básicos de consumo y comprender qué protege CORS, qué limita la tasa de solicitudes y por qué HTTPS es obligatorio fuera del entorno local.
 

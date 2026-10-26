@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # Sesión 22 · Casos de uso repositorios y adaptadores
 
+[Abrir presentación navegable de la Sesión 22](/diapositivas/semana-11-sesion-22)
+
 **Duración:** 2 horas.  
 **Meta:** separar una regla de negocio de HTTP y TypeORM para que sea comprensible, reutilizable y comprobable con pruebas.
 

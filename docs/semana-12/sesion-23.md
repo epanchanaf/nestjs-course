@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # Sesión 23 · Probar reglas de negocio con Jest
 
+[Abrir presentación navegable de la Sesión 23](/diapositivas/semana-12-sesion-23)
+
 **Duración:** 2 horas.  
 **Meta:** crear pruebas unitarias para un caso de uso usando un repositorio falso o simulado, sin iniciar HTTP ni PostgreSQL.
 

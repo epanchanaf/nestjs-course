@@ -4,6 +4,20 @@ const sidebars = {
     'introduccion',
     {
       type: 'category',
+      label: 'Semana 0 · Fundamentos de servidor',
+      items: [
+        'semana-00/objetivos',
+        'semana-00/sesion-00a',
+        {type: 'link', label: '↗ Diapositivas · Sesión 0A', href: '/diapositivas/semana-00-sesion-00a'},
+        'semana-00/sesion-00b',
+        {type: 'link', label: '↗ Diapositivas · Sesión 0B', href: '/diapositivas/semana-00-sesion-00b'},
+        'semana-00/sesion-00c',
+        {type: 'link', label: '↗ Diapositivas · Sesión 0C', href: '/diapositivas/semana-00-sesion-00c'},
+        'semana-00/actividad-diagnostica'
+      ]
+    },
+    {
+      type: 'category',
       label: 'Semana 1 · Fundamentos',
       items: [
         'semana-01/objetivos',
